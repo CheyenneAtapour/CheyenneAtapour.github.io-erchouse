@@ -580,7 +580,7 @@ async function submitListing() {
     asset = document.getElementById('asset').value;
     amount = document.getElementById('amount').value;
     payment = document.getElementById('payment').value;
-    price = document.getElementsById('price').value;
+    price = document.getElementById('price').value;
 
     //listToken(address sellToken, address buyToken, uint256 amountToSell, uint256 pricePerToken)
 
