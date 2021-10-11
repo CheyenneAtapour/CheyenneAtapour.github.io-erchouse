@@ -1,0 +1,14 @@
+{
+  "name": "erchouse-website",
+  "version": "1.0.0",
+  "description": "website for erc house",
+  "main": "require.js",
+  "scripts": {
+    "test": "testing"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "web3": "^1.6.0"
+  }
+}
