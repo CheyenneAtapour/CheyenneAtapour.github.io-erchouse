@@ -540,6 +540,14 @@ contract.options.address = "0x7902968b285ad994844c0DDfA22BfE86f906b359";
 
 candidates = {"Rama": "candidate-1", "Nick": "candidate-2", "Jose": "candidate-3"}
 
+async function connectWallet() {
+    if (window.ethereum) {
+        window.web3 = new Web3(window.ethereum);
+        window.ethereum.enable();
+    }
+    window.web3 = new Web3(window.ethereum);
+    window.ethereum.enable();
+}
 
 async function printCoolNumber() {
     x = await contract.methods.listedTokens(0).call();
