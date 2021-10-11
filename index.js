@@ -548,6 +548,13 @@ async function printCoolNumber() {
     alert(x['buyToken']);
     alert(x['amount']);
     alert(x['price']);
+    updateStatus(x['seller'])
+}
+
+function updateStatus(status) {
+    const statusEl = document.getElementById('status');
+    statusEl.innerHTML = status;
+    console.log(status);
 }
 
 
