@@ -543,12 +543,26 @@ candidates = {"Rama": "candidate-1", "Nick": "candidate-2", "Jose": "candidate-3
 
 async function printCoolNumber() {
     x = await contract.methods.listedTokens(0).call();
-    alert(x['seller']);
-    alert(x['sellToken']);
-    alert(x['buyToken']);
-    alert(x['amount']);
-    alert(x['price']);
-    updateStatus(x['seller'])
+    updateStatus('<br><b>Seller:</b> ' + x['seller'] + 
+        '<br><b>Sell Token:</b> ' + x['sellToken'] + '<br><b>Buy Token:</b> ' + x['buyToken'] + '<br><b>Amount:</b> ' + x['amount'] + '<br><b>Price:</b> ' + x['price'] +
+        '<br><button onclick="changeCoolNumber();">Buy</button><br><br>');
+}
+
+async function getAllListings() {
+    listings = await contract.methods.listings().call();
+    const statusEl = document.getElementById('status');
+    statusEl.innerHTML = ""
+    for (let i = 0; i < listings; i++) {
+        x = await contract.methods.listedTokens(i).call();
+        appendStatus('<br><b>Seller:</b> ' + x['seller'] + 
+            '<br><b>Sell Token:</b> ' + x['sellToken'] + '<br><b>Buy Token:</b> ' + x['buyToken'] + '<br><b>Amount:</b> ' + x['amount'] + '<br><b>Price:</b> ' + x['price'] +
+            '<br><button onclick="changeCoolNumber();">Buy</button><br><br>');
+    }
+}
+
+function appendStatus(status) {
+    const statusEl = document.getElementById('status');
+    statusEl.innerHTML += status;
 }
 
 function updateStatus(status) {
