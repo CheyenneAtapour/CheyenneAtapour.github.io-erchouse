@@ -560,6 +560,25 @@ async function getAllListings() {
     }
 }
 
+async function createListing() {
+    location.href = "./create_listing.html";
+}
+
+async function cancelListingCreation() {
+    location.href = "./index.html";
+}
+
+async function submitListing() {
+    asset = document.getElementById('asset').value;
+    amount = document.getElementById('amount').value;
+    payment = document.getElementById('payment').value;
+    price = document.getElementsById('price').value;
+
+    //listToken(address sellToken, address buyToken, uint256 amountToSell, uint256 pricePerToken)
+
+    alert('your listing has been submitted');
+}
+
 function appendStatus(status) {
     const statusEl = document.getElementById('status');
     statusEl.innerHTML += status;

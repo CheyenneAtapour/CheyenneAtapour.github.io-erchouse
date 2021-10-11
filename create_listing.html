@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+Create a listing here
+<br>
+<head>
+	<script src='https://github.com/CheyenneAtapour/CheyenneAtapour.github.io-erchouse/tree/main/node_modules/web3/dist/web3.min.js'></script>
+    <script src='./node_modules/web3/dist/web3.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.37/dist/web3.min.js'></script>
+</head>
+<body>
+	<script src="./index.js"></script>
+	<br>
+	<form>
+	<label for="asset">Asset to sell:</label><br>
+	<input type="text" id="asset" name="asset" value=""><br><br>
+	<label for="amount">Amount to sell:</label><br>
+	<input type="text" id="amount" name="amount" value=""><br><br>
+	<label for="payment">Desired payment asset:</label><br>
+	<input type="text" id="payment" name="payment" value=""><br><br>
+	<label for="price">Price per token:</label><br>
+	<input type="text" id="price" name="price" value=""><br><br>
+	</form> 
+	<button onclick="cancelListingCreation();">Cancel</button>
+	<button onclick="submitListing();">Submit</button>
+</body>
+</html>
