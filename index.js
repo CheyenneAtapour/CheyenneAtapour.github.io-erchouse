@@ -564,11 +564,10 @@ async function loadContract() {
 }
 
 async function purchaseListing(id) {
-  alert('attempting to purchase listing: ' + id);
   const account = await getAccount();
   const contract = await loadContract();
-  alert(contract);
-  await window.contract.methods.purchaseToken(id, 1).send({from: account});
+  listing = await contract.methods.listedTokens(id).call();
+  await window.contract.methods.purchaseToken(id, listing['amount']).send({from: account});
 }
 
 async function printCoolNumber() {
@@ -584,6 +583,8 @@ async function getAllListings() {
     statusEl.innerHTML = ""
     for (let i = 0; i < listings; i++) {
         x = await contract.methods.listedTokens(i).call();
+        if (x['amount'] <= 0)
+          continue;
         appendStatus('<br><b>Seller:</b> ' + x['seller'] + 
             '<br><b>Sell Token:</b> ' + x['sellToken'] + '<br><b>Buy Token:</b> ' + x['buyToken'] + '<br><b>Amount:</b> ' + x['amount'] + '<br><b>Price:</b> ' + x['price'] +
             '<br><button onclick="purchaseListing(' + i + ');">Buy</button><br><br>');
@@ -608,7 +609,7 @@ async function getAllListingsAppendBody() {
     }
 }
 
-async function createListing() {
+async function createListingScreen() {
     location.href = "./create_listing.html";
 }
 
