@@ -533,12 +533,16 @@ abi = [{
 
 contract = new web3.eth.Contract(abi);
 
+// Later, update this with the mainnet contract address - this is rinkeby
 contract.options.address = "0x7902968b285ad994844c0DDfA22BfE86f906b359";
-
-// update this contract address with your contract address
 
 
 candidates = {"Rama": "candidate-1", "Nick": "candidate-2", "Jose": "candidate-3"}
+
+async function load() {
+  await connectWallet();
+  window.contract = await loadContract();
+}
 
 async function connectWallet() {
     if (window.ethereum) {
@@ -547,6 +551,24 @@ async function connectWallet() {
     }
     window.web3 = new Web3(window.ethereum);
     window.ethereum.enable();
+}
+
+async function getAccount() {
+  const accounts = await window.web3.eth.getAccounts();
+  account = accounts[0];
+  return account;
+}
+
+async function loadContract() {
+  return await new window.web3.eth.Contract(abi, "0x7902968b285ad994844c0DDfA22BfE86f906b359");
+}
+
+async function purchaseListing(id) {
+  alert('attempting to purchase listing: ' + id);
+  const account = await getAccount();
+  const contract = await loadContract();
+  alert(contract);
+  await window.contract.methods.purchaseToken(id, 1).send({from: account});
 }
 
 async function printCoolNumber() {
@@ -564,7 +586,25 @@ async function getAllListings() {
         x = await contract.methods.listedTokens(i).call();
         appendStatus('<br><b>Seller:</b> ' + x['seller'] + 
             '<br><b>Sell Token:</b> ' + x['sellToken'] + '<br><b>Buy Token:</b> ' + x['buyToken'] + '<br><b>Amount:</b> ' + x['amount'] + '<br><b>Price:</b> ' + x['price'] +
-            '<br><button onclick="changeCoolNumber();">Buy</button><br><br>');
+            '<br><button onclick="purchaseListing(' + i + ');">Buy</button><br><br>');
+    }
+}
+
+async function appendListingToBody(body, elementId, content) {
+  var newdiv = document.createElement('div');
+  newdiv.id = 'newid' + elementId;
+  newdiv.innerHTML = content;
+  body.appendChild(newdiv)
+}
+
+async function getAllListingsAppendBody() {
+    listings = await contract.methods.listings().call();
+    var body = document.getElementsByTagName('body')[0];
+    for (let i = 0; i < listings; i++) {
+        x = await contract.methods.listedTokens(i).call();
+        if (x['amount'] == 0)     // Skip sold out listings
+          continue;
+        appendListingToBody(body, i, x['amount']);
     }
 }
 
@@ -619,3 +659,5 @@ function voteForCandidate(candidate) {
  })
 
 }
+
+load();
