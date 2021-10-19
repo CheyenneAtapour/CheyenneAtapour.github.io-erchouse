@@ -585,7 +585,7 @@ async function getAllListings() {
         x = await contract.methods.listedTokens(i).call();
         if (x['amount'] <= 0)
           continue;
-        appendStatus('<br><b>Seller:</b> ' + x['seller'] + 
+        appendStatus('<br><b>Listing ID:</b> ' + i + '<br><b>Seller:</b> ' + x['seller'] + 
             '<br><b>Sell Token:</b> ' + x['sellToken'] + '<br><b>Buy Token:</b> ' + x['buyToken'] + '<br><b>Amount:</b> ' + x['amount'] + '<br><b>Price:</b> ' + x['price'] +
             '<br><button onclick="purchaseListing(' + i + ');">Buy</button><br><br>');
     }
@@ -610,11 +610,15 @@ async function getAllListingsAppendBody() {
 }
 
 async function createListingScreen() {
-    location.href = "./create_listing.html";
+  location.href = "./create_listing.html";
 }
 
 async function cancelListingCreation() {
-    location.href = "./index.html";
+  location.href = "./index.html";
+}
+
+async function cancelListingScreen() {
+  location.href = "./cancel_listing.html";
 }
 
 async function submitListing() {
@@ -628,6 +632,13 @@ async function submitListing() {
     const account = await getAccount();
     const contract = await loadContract();
     await window.contract.methods.listToken(String(asset), String(payment), amount, price).send({from: account});
+}
+
+async function submitListingCancellation() {
+  id = document.getElementById('listing_id').value;
+  const account = await getAccount();
+  const contract = await loadContract();
+  await window.contract.methods.cancelListing(id).send({from: account});
 }
 
 function appendStatus(status) {
