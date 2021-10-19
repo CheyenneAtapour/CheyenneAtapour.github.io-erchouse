@@ -531,14 +531,6 @@ abi = [{
             }
         ]
 
-contract = new web3.eth.Contract(abi);
-
-// Later, update this with the mainnet contract address - this is rinkeby
-contract.options.address = "0x7902968b285ad994844c0DDfA22BfE86f906b359";
-
-
-candidates = {"Rama": "candidate-1", "Nick": "candidate-2", "Jose": "candidate-3"}
-
 async function load() {
   await connectWallet();
   window.contract = await loadContract();
@@ -565,8 +557,7 @@ async function loadContract() {
 
 async function purchaseListing(id) {
   const account = await getAccount();
-  const contract = await loadContract();
-  listing = await contract.methods.listedTokens(id).call();
+  listing = await window.contract.methods.listedTokens(id).call();
   await window.contract.methods.purchaseToken(id, listing['amount']).send({from: account});
 }
 
@@ -627,17 +618,13 @@ async function submitListing() {
     payment = document.getElementById('payment').value;
     price = document.getElementById('price').value;
 
-    //listToken(address sellToken, address buyToken, uint256 amountToSell, uint256 pricePerToken)
-
     const account = await getAccount();
-    const contract = await loadContract();
     await window.contract.methods.listToken(String(asset), String(payment), amount, price).send({from: account});
 }
 
 async function submitListingCancellation() {
   id = document.getElementById('listing_id').value;
   const account = await getAccount();
-  const contract = await loadContract();
   await window.contract.methods.cancelListing(id).send({from: account});
 }
 
