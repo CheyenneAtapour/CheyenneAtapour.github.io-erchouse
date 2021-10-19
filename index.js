@@ -625,7 +625,9 @@ async function submitListing() {
 
     //listToken(address sellToken, address buyToken, uint256 amountToSell, uint256 pricePerToken)
 
-    alert('your listing has been submitted');
+    const account = await getAccount();
+    const contract = await loadContract();
+    await window.contract.methods.listToken(String(asset), String(payment), amount, price).send({from: account});
 }
 
 function appendStatus(status) {
