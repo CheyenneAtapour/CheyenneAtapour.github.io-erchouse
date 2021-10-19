@@ -531,6 +531,9 @@ abi = [{
             }
         ]
 
+// Change this to mainnet contract address after launch
+contract_address = "0x7902968b285ad994844c0DDfA22BfE86f906b359";
+
 async function load() {
   await connectWallet();
   window.contract = await loadContract();
@@ -552,7 +555,7 @@ async function getAccount() {
 }
 
 async function loadContract() {
-  return await new window.web3.eth.Contract(abi, "0x7902968b285ad994844c0DDfA22BfE86f906b359");
+  return await new window.web3.eth.Contract(abi, contract_address);
 }
 
 async function purchaseListing(id) {
