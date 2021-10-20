@@ -585,6 +585,23 @@ async function getAllListings() {
     }
 }
 
+async function searchToken() {
+  token = String(document.getElementById('search_token').value);
+  listings = await contract.methods.listings().call();
+  const statusEl = document.getElementById('status');
+  statusEl.innerHTML = ""
+  for (let i = 0; i < listings; i++) {
+      x = await contract.methods.listedTokens(i).call();
+      if (x['amount'] <= 0)
+        continue;
+      if (String(x['sellToken']) != token)
+        continue;
+      appendStatus('<br><b>Listing ID:</b> ' + i + '<br><b>Seller:</b> ' + x['seller'] + 
+          '<br><b>Sell Token:</b> ' + x['sellToken'] + '<br><b>Buy Token:</b> ' + x['buyToken'] + '<br><b>Amount:</b> ' + x['amount'] + '<br><b>Price:</b> ' + x['price'] +
+          '<br><button onclick="purchaseListing(' + i + ');">Buy</button><br><br>');
+  }
+}
+
 async function appendListingToBody(body, elementId, content) {
   var newdiv = document.createElement('div');
   newdiv.id = 'newid' + elementId;
