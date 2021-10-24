@@ -22,7 +22,7 @@
 
 <body>
     <h1>ERC House</h1>
-    <button onclick="appendListingToTable();">Get Listings</button>
+    <button onclick="getAllListingsToTable();">Get Listings</button>
     <button onclick="createListingScreen();">Create Listing</button>
     <button onclick="cancelListingScreen();">Cancel Listing</button>
     <button onclick="connectWallet();">Connect Wallet</button>
@@ -31,19 +31,20 @@
     <input type="text" id="search_token" name="search_token" value="">
     <button onclick="searchToken();">Search</button>
     </p> 
-    <span id="status">Welcome! Please select an option</span>
 
     <div class="boxes">
     <div class="row">
         <div class="innerleft">
-                <table id="table">
-                    <tr>
+                <table>
+                    <thead>
                         <th>Token</th>
                         <th>Amount</th>
                         <th>Unit Price</th>
                         <th>Payment</th>
                         <th>Purchase</th>
-                    </tr>
+                    </thead>
+                    <tbody id="table">
+                    </tbody>
                 </table>
           
         </div>
