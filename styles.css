@@ -6,6 +6,7 @@ body {
     position: relative;
     top: 0px;
     left: 0px;
+    
    }
 
 * {
@@ -236,8 +237,6 @@ body {
     height: 100%;
 
     text-align: center;
-opacity: 1;
-    position: relative;
 
     padding: 0px;
 
@@ -261,6 +260,7 @@ opacity: 1;
     font-size: 30px;
     padding-top: 20px;
     padding-bottom: 20px;
+
   }
 
 .right span {
@@ -268,12 +268,21 @@ opacity: 1;
 }
   
 
-
+.innerleft thead th { 
+    position: sticky; top: 0; 
+    background: #00C9FF;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #92FE9D, #63ddff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #92FE9D, #63ddff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+     
+    z-index: 1;
+}
   
 .innerleft table, tbody {
     width: 100%;
 
 }
+
+
 
 .innerleft table, th, td {
     margin-top: -2px;
@@ -436,3 +445,15 @@ input[type=text] {
 .preright input[type=text]:focus {
     background: #c1e3f7cc;
   }
+
+.buybtn {
+    padding: 2px;
+    padding-right:10%;
+    padding-left:10%;
+    border: 2px solid rgba(0,0,0,1);
+    background: #a7c7c4;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #38ef7d, #aae2c8);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #38ef7d, #aae2c8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 4px;
+    z-index: 99;
+}

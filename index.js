@@ -600,7 +600,8 @@ async function appendListingTable(table, seller, amount, price, sellToken, buyTo
   var buttonEntry = document.createElement('td');
   var purchaseButton = document.createElement('button');
   purchaseButton.onclick=function() { purchaseListing(listingId) };
-  purchaseButton.innerHTML = 'Buy'
+  purchaseButton.className = 'buybtn';
+  purchaseButton.innerHTML = 'Buy';
   buttonEntry.appendChild(purchaseButton);
   
   // Append table children to table element
