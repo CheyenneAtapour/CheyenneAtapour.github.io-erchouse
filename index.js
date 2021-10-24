@@ -585,6 +585,47 @@ async function getAllListings() {
     }
 }
 
+async function appendListing(table, seller, amount, price, sellToken, buyToken, listingId) {
+  // Create a table element
+  var newEntry = document.createElement('tr');
+  // Create table's children elements
+  var amountEntry = document.createElement('td');
+  amountEntry.innerHTML = amount;
+  var priceEntry = document.createElement('td');
+  priceEntry.innerHTML = price;
+  var sellTokenEntry = document.createElement('td');
+  sellTokenEntry.innerHTML = sellToken;
+  var buyTokenEntry = document.createElement('td');
+  buyTokenEntry.innerHTML = buyToken;
+  var buttonEntry = document.createElement('td');
+  var purchaseButton = document.createElement('button');
+  purchaseButton.onclick=function() { purchaseListing(listingId) };
+  purchaseButton.innerHTML = 'Buy'
+  buttonEntry.appendChild(purchaseButton);
+  
+  // Append table children to table element
+  newEntry.appendChild(sellTokenEntry);
+  newEntry.appendChild(amountEntry);
+  newEntry.appendChild(priceEntry);
+  newEntry.appendChild(buyTokenEntry);
+  newEntry.appendChild(buttonEntry);
+
+  // Append table element to master table
+  table.appendChild(newEntry);
+}
+
+async function appendListingToTable() {
+  listings = await contract.methods.listings().call();
+  const table = document.getElementById('table');
+
+  for (let i = 0; i < listings; i++){
+    x = await contract.methods.listedTokens(i).call();
+    if (x['amount'] <= 0)
+      continue;
+    appendListing(table, x['seller'], x['amount'], x['price'], x['sellToken'], x['buyToken'], i);
+  }
+}
+
 async function searchToken() {
   token = String(document.getElementById('search_token').value);
   listings = await contract.methods.listings().call();
