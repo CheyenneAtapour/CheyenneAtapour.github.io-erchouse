@@ -789,7 +789,16 @@ async function loadTokenContract(address) {
 async function purchaseListing(id) {
   const account = await getAccount();
   listing = await window.contract.methods.listedTokens(id).call();
-  await window.contract.methods.purchaseToken(id, listing['amount']).send({from: account});
+
+  tokenContract = await loadTokenContract(String(listing['buyToken']));
+  var allowance = await tokenContract.methods.allowance(account, contract_address).call();
+
+  if (BigInt(allowance) < BigInt(listing['amount'])) {
+    await tokenContract.methods.approve(contract_address, String(max_uint)).send({from: account});
+  }
+  else{
+    await window.contract.methods.purchaseToken(id, listing['amount']).send({from: account});
+  }
 }
 
 async function printCoolNumber() {
