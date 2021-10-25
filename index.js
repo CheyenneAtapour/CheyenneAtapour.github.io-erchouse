@@ -757,6 +757,7 @@ erc20Abi = [
 // Change this to mainnet contract address after launch
 contract_address = "0x7902968b285ad994844c0DDfA22BfE86f906b359";
 max_uint = BigInt(BigInt(2) ** BigInt(256)) - BigInt(1);
+var known_tokens = { "USDC": "0xd12bc93ac5ea2b4ba99e0ffed053a53b6d18c7a3", "FRAX": "0x54717398c107ab24ec82bca3f3c2d4dda34c5f1a" };
 
 async function load() {
   await connectWallet();
@@ -933,6 +934,15 @@ async function submitListing() {
     amount = document.getElementById('amount').value;
     payment = document.getElementById('payment').value;
     price = document.getElementById('price').value;
+
+    // Remap the value of asset if chosen dropdown string
+    if (String(asset) in known_tokens) {
+      asset = known_tokens[asset];
+    }
+
+    if (String(payment) in known_tokens) {
+      payment = known_tokens[payment];
+    }
 
     const account = await getAccount();
     tokenContract = await loadTokenContract(String(asset));

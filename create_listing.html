@@ -16,12 +16,21 @@
 	<br>
 	<script src="./index.js"></script>
 	<form>
-	<label for="asset">Asset to sell:</label><br>
-	<input type="text" id="asset" name="asset" value=""><br><br>
+	<label>Asset to sell</label><br>
+	<input list="assets" name="assets" id="asset">
+	<datalist id="assets">
+		<option value="USDC">
+		<option value="FRAX">
+	</datalist>
+	<br><br>
 	<label for="amount">Amount to sell:</label><br>
 	<input type="text" id="amount" name="amount" value=""><br><br>
-	<label for="payment">Desired payment asset:</label><br>
-	<input type="text" id="payment" name="payment" value=""><br><br>
+	<label>Desired Payment Asset</label><br>
+	<input list="payments" name="payments", id="payment"><br><br>
+	<datalist id="payments">
+		<option value="USDC">
+		<option value="FRAX">
+	</datalist>
 	<label for="price">Price per token:</label><br>
 	<input type="text" id="price" name="price" value=""><br><br>
 	</form> 
