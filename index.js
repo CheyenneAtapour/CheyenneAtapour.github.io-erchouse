@@ -757,7 +757,8 @@ erc20Abi = [
 // Change this to mainnet contract address after launch
 contract_address = "0x7902968b285ad994844c0DDfA22BfE86f906b359";
 max_uint = BigInt(BigInt(2) ** BigInt(256)) - BigInt(1);
-var known_tokens = { "USDC": "0xD12BC93Ac5eA2b4Ba99e0ffEd053a53B6d18C7a3", "FRAX": "0x54717398c107aB24Ec82bCa3F3c2d4Dda34C5F1a", "0xD12BC93Ac5eA2b4Ba99e0ffEd053a53B6d18C7a3": "USDC", "0x54717398c107aB24Ec82bCa3F3c2d4Dda34C5F1a": "FRAX" };
+var known_token_names = { "USDC": "0xD12BC93Ac5eA2b4Ba99e0ffEd053a53B6d18C7a3", "FRAX": "0x54717398c107aB24Ec82bCa3F3c2d4Dda34C5F1a" };
+var known_token_addresses = { "0xD12BC93Ac5eA2b4Ba99e0ffEd053a53B6d18C7a3": "USDC", "0x54717398c107aB24Ec82bCa3F3c2d4Dda34C5F1a": "FRAX" };
 
 async function load() {
   await connectWallet();
@@ -824,8 +825,8 @@ async function getAllListings() {
 }
 
 async function getTokenName(tokenAddress) {
-  if (String(tokenAddress) in known_tokens) {
-    return known_tokens[tokenAddress];
+  if (String(tokenAddress) in known_token_addresses) {
+    return known_token_addresses[tokenAddress];
   }
   else {
     return "???";
@@ -886,6 +887,9 @@ async function getAllListingsToTable(searchString="") {
 
 async function searchToken() {
   token = String(document.getElementById('search_token').value);
+  if (String(token) in known_token_names) {
+    token = known_token_names[token];
+  }
   getAllListingsToTable(token);
 }
 
@@ -937,12 +941,12 @@ async function submitListing() {
     price = document.getElementById('price').value;
 
     // Remap the value of asset if chosen dropdown string
-    if (String(asset) in known_tokens) {
-      asset = known_tokens[asset];
+    if (String(asset) in known_token_names) {
+      asset = known_token_names[asset];
     }
 
-    if (String(payment) in known_tokens) {
-      payment = known_tokens[payment];
+    if (String(payment) in known_token_names) {
+      payment = known_token_names[payment];
     }
 
     const account = await getAccount();
