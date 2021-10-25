@@ -847,6 +847,8 @@ async function appendListingTable(table, seller, amount, price, sellToken, buyTo
   sellTokenNameEntry.innerHTML = await getTokenName(sellToken);
   var sellTokenEntry = document.createElement('td');
   sellTokenEntry.innerHTML = sellToken;
+  var buyTokenNameEntry = document.createElement('td');
+  buyTokenNameEntry.innerHTML = await getTokenName(buyToken);
   var buyTokenEntry = document.createElement('td');
   buyTokenEntry.innerHTML = buyToken;
   var buttonEntry = document.createElement('td');
@@ -862,6 +864,7 @@ async function appendListingTable(table, seller, amount, price, sellToken, buyTo
   newEntry.appendChild(sellTokenEntry);
   newEntry.appendChild(amountEntry);
   newEntry.appendChild(priceEntry);
+  newEntry.appendChild(buyTokenNameEntry);
   newEntry.appendChild(buyTokenEntry);
   newEntry.appendChild(buttonEntry);
 
