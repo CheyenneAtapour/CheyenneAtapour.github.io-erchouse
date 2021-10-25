@@ -585,14 +585,26 @@ async function getAllListings() {
     }
 }
 
+async function getTokenName(tokenAddress) {
+  tokenslist = [];
+  if (!tokenAddress in tokenslist) {
+    return "???";
+  }
+  return "???";
+}
+
 async function appendListingTable(table, seller, amount, price, sellToken, buyToken, listingId) {
   // Create a table element
   var newEntry = document.createElement('tr');
   // Create table's children elements
+  var idEntry = document.createElement('td');
+  idEntry.innerHTML = listingId;
   var amountEntry = document.createElement('td');
   amountEntry.innerHTML = amount;
   var priceEntry = document.createElement('td');
   priceEntry.innerHTML = price;
+  var sellTokenNameEntry = document.createElement('td');
+  sellTokenNameEntry.innerHTML = await getTokenName(sellToken);
   var sellTokenEntry = document.createElement('td');
   sellTokenEntry.innerHTML = sellToken;
   var buyTokenEntry = document.createElement('td');
@@ -605,6 +617,8 @@ async function appendListingTable(table, seller, amount, price, sellToken, buyTo
   buttonEntry.appendChild(purchaseButton);
   
   // Append table children to table element
+  newEntry.appendChild(idEntry);
+  newEntry.appendChild(sellTokenNameEntry);
   newEntry.appendChild(sellTokenEntry);
   newEntry.appendChild(amountEntry);
   newEntry.appendChild(priceEntry);
@@ -664,6 +678,17 @@ async function cancelListingCreation() {
 
 async function cancelListingScreen() {
   location.href = "./cancel_listing.html";
+}
+
+async function whitelistTokenScreen() {
+  location.href = "./whitelist_token.html";
+}
+
+async function submitWhitelist() {
+  tokenAddress = document.getElementById('token_address').value;
+  const account = await getAccount();
+  payment = await window.contract.methods.registrationFee().call();
+  await window.contract.methods.whiteListToken(tokenAddress).send({from: account, value: payment});
 }
 
 async function submitListing() {

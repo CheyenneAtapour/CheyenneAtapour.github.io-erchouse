@@ -25,6 +25,7 @@
     <button onclick="getAllListingsToTable();">Get Listings</button>
     <button onclick="createListingScreen();">Create Listing</button>
     <button onclick="cancelListingScreen();">Cancel Listing</button>
+    <button onclick="whitelistTokenScreen();">Whitelist Token</button>
     <button onclick="connectWallet();">Connect Wallet</button>
     <p>
     <label for="search_token">Search for token:</label><br>
@@ -38,7 +39,9 @@
         <div class="innerleft">
                 <table>
                     <thead>
-                        <th>Token</th>
+                        <th>Listing ID</th>
+                        <th>Token Name</th>
+                        <th>Token Address</th>
                         <th>Amount</th>
                         <th>Unit Price</th>
                         <th>Payment</th>
