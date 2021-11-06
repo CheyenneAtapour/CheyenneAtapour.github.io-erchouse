@@ -21,7 +21,47 @@
 </head>
 
 <body>
-    <h1>ERC House</h1>
+    <nav class="toplogo"></nav>
+
+<!-- Navbar Section-->
+
+<nav class="navbar">
+        <div class="navbar__container">
+            <div class="navbar__toggle" id="mobile-menu">
+          
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a onclick="getAllListingsToTable();" class="navbar__links" id="listing-page">Get Listings</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="#createlisting" class="navbar__links" id="createlisting-page">Create Listing</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="#cancellisting" class="navbar__links" id="cancellisting-page">Cancel Listing</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="#register" class="navbar__links" id="register-page">Register Token</a>
+                </li>
+                <li>
+                <div class="walletconnect">
+                    <a href="#Connect" class="navbar__links" id="Connect">Connect Wallet</a>
+                </div>
+                </li>   
+                <div class ="searchbar">
+                    <form>
+                        <input type="text" name="search" placeholder="Search..">
+                      </form>
+                </div>
+            </ul>
+            
+        </div>
+
+        
+</nav>
     <button onclick="getAllListingsToTable();">Get Listings</button>
     <button onclick="createListingScreen();">Create Listing</button>
     <button onclick="cancelListingScreen();">Cancel Listing</button>

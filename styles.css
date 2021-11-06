@@ -13,17 +13,84 @@ body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Averia Sans Libre', cursive;
+    font-family: 'Averia Sans Libre';
     
     scroll-behavior: smooth;
     
 }
 
-
-
-.navbar {
-    height: 100px;
+.toplogo {
+    padding: 0px;
     display: flex;
+    height:14%;
+    background: url("https://raw.githubusercontent.com/CheyenneAtapour/CheyenneAtapour.github.io-erchouse/main/ERCLogo4.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center top; 
+    background-size: contain;
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+    padding-left: 5%;
+    padding-right: 5%;
+
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: #111;
+    cursor: pointer;
+  }
+
+
+
+.navbar__container {
+
+    justify-content: center;
+    z-index: 1;
+    width: 100%;
+    margin: 0;
+}
+
+.searchbar input[type=text] {
+    width: 30%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    margin-top: 10px;
+    float: right;
+    text-align: left;
+    
+  }
+
+.searchbar input[type=text]:focus {
+    background: #c1e3f7cc;
+  }
+/* .navbar {
+    height: 60px;
     justify-content: center;
     align-items: center;
     font-size: 1rem;
@@ -31,28 +98,19 @@ body {
     top: 0;
     z-index: 999;
     padding-bottom: 0px;
-    background: #2980B9;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #bbf0fd21, #aae1f5, #7ec4f3);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #b8edfd00, #9de5ff, #69bbf1); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+
+    
 }
 
-.nav_logo {
-    padding: 10px;
-}
+
 
 .nav_words {
     padding: 10px;
     font-size: 50px;
-    vertical-align: bottom;
+
 }
 
-.walletconnect {
-    text-align: right;
-    padding: 50px;
-    position: relative;
-    white-space: nowrap;
-}
 
 .navbar__container {
     display: flex;
@@ -60,9 +118,7 @@ body {
     height: 100px;
     z-index: 1;
     width: 100%;
-    max-width: 1300px;
     margin: 0;
-
 }
 
 
@@ -81,7 +137,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 125px;
+    width: 80%;
     text-decoration: none;
     height: 100%;
     transition: all 0.3s ease;
@@ -91,8 +147,11 @@ body {
     position: relative;
 }
 
+li {
+    display: block;
+  }
 
-
+*/
 
 
  
@@ -202,9 +261,9 @@ body {
   }
   
 .left {
-    width: 65%;
+    width: 100%;
     text-align: center;
-
+   
 
 }
 
@@ -238,7 +297,7 @@ body {
 
     text-align: center;
 
-    padding: 0px;
+    padding-top: 10px;
 
 
     
@@ -267,13 +326,16 @@ body {
     text-align: center;
 }
   
+.note {
+    padding-bottom: 20px;
+}
 
 .innerleft thead th { 
     position: sticky; top: 0; 
     background: #00C9FF;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, #92FE9D, #63ddff);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to bottom, #92FE9D, #63ddff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-     
+
     z-index: 1;
 }
   
@@ -427,24 +489,7 @@ input[type=text] {
     
 }
 
-.preright input[type=text] {
-    width: 30%;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    background-color: white;
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 10px;
-    margin-left: 30px;
-    margin-top: 20px;
 
-  }
-
-.preright input[type=text]:focus {
-    background: #c1e3f7cc;
-  }
 
 .buybtn {
     padding: 2px;
@@ -456,4 +501,96 @@ input[type=text] {
     background: linear-gradient(to top, #38ef7d, #aae2c8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border-radius: 4px;
     z-index: 99;
+}
+
+.listingbox {
+    width: 100%;
+    padding-top: 20px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    padding-left: 150px;
+    justify-content: center;
+
+}
+
+.listingbox td {
+    font-size: 16px;
+}
+
+.listingbox input[type=text] {
+    width: 300px;
+    text-align: left;
+}
+
+.listbtn {
+    padding: 2px;
+    padding-right:10%;
+    padding-left:10%;
+    border: 2px solid rgba(0,0,0,1);
+    background: #a7c7c4;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #38ef7d, #aae2c8);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #38ef7d, #aae2c8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 4px;
+    z-index: 99;
+    align-items: center;
+    position: relative;
+    font-size: 16px;
+}
+
+
+
+.dropdown {
+
+    position: relative;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    z-index: 1;
+}
+
+
+
+
+.cancelbox {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.cancelbox td {
+    font-size: 18px;
+}
+
+.cancelbox input[type=text] {
+    width: 300px;
+    text-align: left;
+}
+
+.cancelbtn {
+    padding: 2px;
+    padding-right:10%;
+    padding-left:10%;
+    border: 2px solid rgba(0,0,0,1);
+    background: #a7c7c4;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #ef3838, #f87845);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #ef3838, #f87845); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 4px;
+    z-index: 99;
+    align-items: center;
+    position: relative;
+    font-size: 16px;
+}
+
+.nevermindbtn {
+    padding: 2px;
+    padding-right:10%;
+    padding-left:10%;
+    border: 2px solid rgba(0,0,0,1);
+    background: #a7c7c4;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #38efd0, #67d2da);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #38efd0, #67d2da); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 4px;
+    z-index: 99;
+    align-items: center;
+    position: relative;
+    font-size: 16px;
 }
