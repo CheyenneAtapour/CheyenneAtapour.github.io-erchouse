@@ -73,7 +73,7 @@ ul {
     margin: 0;
 }
 
-.searchbar input[type=text] {
+.navbar__menu .searchbar input[type=text] {
     width: 30%;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -89,6 +89,18 @@ ul {
 .searchbar input[type=text]:focus {
     background: #c1e3f7cc;
   }
+
+.navbar__menu .searchbar button {
+  float: right;
+  padding: 5px 9px;
+  margin-top: 8px;
+  margin-right: 16px;
+  margin-left: 1px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
 /* .navbar {
     height: 60px;
     justify-content: center;

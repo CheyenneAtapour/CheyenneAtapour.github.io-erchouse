@@ -38,23 +38,24 @@
                     <a onclick="getAllListingsToTable();" class="navbar__links" id="listing-page">Get Listings</a>
                 </li>
                 <li class="navbar__item">
-                    <a href="#createlisting" class="navbar__links" id="createlisting-page">Create Listing</a>
+                    <a onclick="createListingScreen();" class="navbar__links" id="createlisting-page">Create Listing</a>
                 </li>
                 <li class="navbar__item">
-                    <a href="#cancellisting" class="navbar__links" id="cancellisting-page">Cancel Listing</a>
+                    <a onclick="cancelListingScreen();" class="navbar__links" id="cancellisting-page">Cancel Listing</a>
                 </li>
                 <li class="navbar__item">
-                    <a href="#register" class="navbar__links" id="register-page">Register Token</a>
+                    <a onclick="whitelistTokenScreen();" class="navbar__links" id="register-page">Register Token</a>
                 </li>
                 <li>
                 <div class="walletconnect">
-                    <a href="#Connect" class="navbar__links" id="Connect">Connect Wallet</a>
+                    <a onclick="connectWallet();" class="navbar__links" id="Connect">Connect Wallet</a>
                 </div>
                 </li>   
                 <div class ="searchbar">
-                    <form>
-                        <input type="text" name="search" placeholder="Search..">
-                      </form>
+                    <p>
+                        <button type="submit" onclick="searchToken();">Search</button>
+                        <input type="text" id="search_token" name="search" placeholder="Search For Token..." value="">
+                    <p>
                 </div>
             </ul>
             
@@ -62,16 +63,6 @@
 
         
 </nav>
-    <button onclick="getAllListingsToTable();">Get Listings</button>
-    <button onclick="createListingScreen();">Create Listing</button>
-    <button onclick="cancelListingScreen();">Cancel Listing</button>
-    <button onclick="whitelistTokenScreen();">Register Token</button>
-    <button onclick="connectWallet();">Connect Wallet</button>
-    <p>
-    <label for="search_token">Search for token:</label><br>
-    <input type="text" id="search_token" name="search_token" value="">
-    <button onclick="searchToken();">Search</button>
-    </p> 
     <h3>Note: Your first time, you will be prompted to approve spending (only once per token)</h3>
     <br>
 
