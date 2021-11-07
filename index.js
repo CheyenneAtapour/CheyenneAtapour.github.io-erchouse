@@ -795,11 +795,25 @@ async function purchaseListing(id) {
   tokenContract = await loadTokenContract(String(listing['buyToken']));
   var allowance = await tokenContract.methods.allowance(account, contract_address).call();
 
-  if (BigInt(allowance) < BigInt(listing['amount'])) {
+  var amount = prompt("Please enter the amount you wish to purchase out of " + 
+    String(BigInt(listing['amount'])), "0");
+
+  if (amount == null || BigInt(amount) <= 0)
+  {
+    return;
+  }
+
+  amount = BigInt(amount);
+
+  if (BigInt(allowance) < amount) {
     await tokenContract.methods.approve(contract_address, String(max_uint)).send({from: account});
   }
+  else if (amount > BigInt(listing['amount']))
+  {
+    alert("Please enter a valid amount");
+  }
   else{
-    await window.contract.methods.purchaseToken(id, listing['amount']).send({from: account});
+    await window.contract.methods.purchaseToken(id, String(amount)).send({from: account});
   }
 }
 
@@ -853,7 +867,11 @@ async function appendListingTable(table, seller, amount, price, sellToken, buyTo
   buyTokenEntry.innerHTML = buyToken;
   var buttonEntry = document.createElement('td');
   var purchaseButton = document.createElement('button');
-  purchaseButton.onclick=function() { purchaseListing(listingId) };
+  purchaseButton.onclick=function() { 
+    //var amount = prompt("Please enter the amount you wish to purchase", "0");
+    //alert(amount);
+    purchaseListing(listingId) 
+  };
   purchaseButton.className = 'buybtn';
   purchaseButton.innerHTML = 'Buy';
   buttonEntry.appendChild(purchaseButton);
