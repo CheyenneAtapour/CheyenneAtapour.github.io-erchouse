@@ -795,12 +795,8 @@ async function purchaseListing(id) {
   tokenContract = await loadTokenContract(String(listing['buyToken']));
   var allowance = await tokenContract.methods.allowance(account, contract_address).call();
 
-  var buyTokenName = "???";
-  if (String(listing['buyToken']) in known_token_addresses)
-    buyTokenName = known_token_addresses[String(listing['buyToken'])];
-  var sellTokenName = "???";
-  if (String(listing['sellToken']) in known_token_addresses)
-    sellTokenName = known_token_addresses[String(listing['sellToken'])];
+  var buyTokenName = await getTokenName(String(listing['buyToken']));
+  var sellTokenName = await getTokenName(String(listing['sellToken']));
 
   var amount = prompt("Purchasing Listing ID: " + String(id) + "\n" +
     "Purchasing " + buyTokenName + " for " + String([listing['price']]) + " " + 
