@@ -801,8 +801,8 @@ async function purchaseListing(id) {
   var sellTokenName = await getTokenName(String(listing['sellToken']));
 
   var amount = prompt("Purchasing Listing ID: " + String(id) + "\n" +
-    "Purchasing " + buyTokenName + " for " + String([listing['price']]) + " " + 
-    sellTokenName + " each " + "\n" + 
+    "Purchasing " + sellTokenName + " for " + String([listing['price']]) + " " + 
+    buyTokenName + " each " + "\n" + 
     "Please enter the amount you wish to purchase out of " + 
     String(BigInt(listing['amount'])), "0");
 
