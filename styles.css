@@ -63,7 +63,6 @@ ul {
     cursor: pointer;
   }
 
-
 .navbar__container {
 
     justify-content: center;
@@ -100,73 +99,6 @@ ul {
   border: none;
   cursor: pointer;
 }
-/* .navbar {
-    height: 60px;
-    justify-content: center;
-    align-items: center;
-    font-size: 1rem;
-    position: relative;
-    top: 0;
-    z-index: 999;
-    padding-bottom: 0px;
-
-
-    
-}
-
-
-
-.nav_words {
-    padding: 10px;
-    font-size: 50px;
-
-}
-
-
-.navbar__container {
-    display: flex;
-    justify-content: center;
-    height: 100px;
-    z-index: 1;
-    width: 100%;
-    margin: 0;
-}
-
-
-.navbar__menu {
-    display:flex;
-    align-items:center;
-    list-style:none;
-}
-
-.navbar__item {
-    height: 100px;
-}
-
-.navbar__links {
-    color: rgb(45, 45, 45);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-    text-decoration: none;
-    height: 100%;
-    transition: all 0.3s ease;
-    letter-spacing: 3.5px;
-    font-weight: 600;
-    font-size: 16px;
-    position: relative;
-}
-
-li {
-    display: block;
-  }
-
-*/
-
-
- 
-  
 
 @media screen and (max-width: 960px) {
     .navbar__container {
@@ -252,8 +184,6 @@ li {
     
 }
 
-
-
 .boxes {
     padding: 0px;
     
@@ -278,30 +208,14 @@ li {
 
 }
 
+.tokenname {
 
-    .tokenname {
+    text-align: center;
+    font-size: 30px;
+    display: inline-block;
+    padding: 0px;
 
-        text-align: center;
-        font-size: 30px;
-        display: inline-block;
-        padding: 0px;
-
-    }
-/*
-    .tokeninfobutton {
-
-        text-align: center;
-        border: 2px solid rgba(0,0,0,1);
-        padding: 10px;
-        border-radius: 15px;
-        margin-top: -30px;
-        display: inline-block;
-        font-size: 10px;
-        background: linear-gradient(rgba(255,255,255,0.8999999761581421), rgba(252,217,184,0.019999999552965164));
- 
-
-    }
-*/
+}
 
 .innerleft {
     height: 100%;
@@ -355,8 +269,6 @@ li {
 
 }
 
-
-
 .innerleft table, th, td {
     margin-top: -2px;
     text-align: center;
@@ -368,19 +280,18 @@ li {
 
     
 }
+
 .innerleft th, td {
     padding: 12px;
     position: relative;
     
 }
+
 .innerleft tr:nth-child(even) {
     background: #a8ff78;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #96fdded0, #8fdbffe5);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #96fdded0, #8fdbffe5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to bottom, #96fdded0, #8fdbffe5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #96fdded0, #8fdbffe5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-
-
-
 
 .innerright table, tbody {
     width: 100%;
@@ -397,8 +308,6 @@ background: linear-gradient(to bottom, #96fdded0, #8fdbffe5); /* W3C, IE 10+/ Ed
     align-content: center;
     font-size: 14px;
     position: relative;
-    
-
 }
 
 .innerright th, td {
@@ -418,6 +327,7 @@ background: linear-gradient(to bottom, #96fdded0, #8fdbffe5); /* W3C, IE 10+/ Ed
     font-size: 18px;
     vertical-align: middle;
 }
+
 input[type=text] {
     width: 30%;
     padding: 3px;
@@ -500,8 +410,6 @@ input[type=text] {
     
 }
 
-
-
 .buybtn {
     padding: 2px;
     padding-right:10%;
@@ -548,8 +456,6 @@ input[type=text] {
     font-size: 16px;
 }
 
-
-
 .dropdown {
 
     position: relative;
@@ -558,9 +464,6 @@ input[type=text] {
 
     z-index: 1;
 }
-
-
-
 
 .cancelbox {
     padding-left: 30px;
