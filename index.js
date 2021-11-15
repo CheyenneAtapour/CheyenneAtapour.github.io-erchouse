@@ -825,27 +825,6 @@ async function purchaseListing(id) {
   }
 }
 
-async function printCoolNumber() {
-    x = await contract.methods.listedTokens(0).call();
-    updateStatus('<br><b>Seller:</b> ' + x['seller'] + 
-        '<br><b>Sell Token:</b> ' + x['sellToken'] + '<br><b>Buy Token:</b> ' + x['buyToken'] + '<br><b>Amount:</b> ' + x['amount'] + '<br><b>Price:</b> ' + x['price'] +
-        '<br><button onclick="changeCoolNumber();">Buy</button><br><br>');
-}
-
-async function getAllListings() {
-    listings = await contract.methods.listings().call();
-    const statusEl = document.getElementById('status');
-    statusEl.innerHTML = ""
-    for (let i = 0; i < listings; i++) {
-        x = await contract.methods.listedTokens(i).call();
-        if (x['amount'] <= 0)
-          continue;
-        appendStatus('<br><b>Listing ID:</b> ' + i + '<br><b>Seller:</b> ' + x['seller'] + 
-            '<br><b>Sell Token:</b> ' + x['sellToken'] + '<br><b>Buy Token:</b> ' + x['buyToken'] + '<br><b>Amount:</b> ' + x['amount'] + '<br><b>Price:</b> ' + x['price'] +
-            '<br><button onclick="purchaseListing(' + i + ');">Buy</button><br><br>');
-    }
-}
-
 async function getTokenName(tokenAddress) {
   if (String(tokenAddress) in known_token_addresses) {
     return known_token_addresses[tokenAddress];
@@ -922,24 +901,6 @@ async function searchToken() {
   getAllListingsToTable(token);
 }
 
-async function appendListingToBody(body, elementId, content) {
-  var newdiv = document.createElement('div');
-  newdiv.id = 'newid' + elementId;
-  newdiv.innerHTML = content;
-  body.appendChild(newdiv)
-}
-
-async function getAllListingsAppendBody() {
-    listings = await contract.methods.listings().call();
-    var body = document.getElementsByTagName('body')[0];
-    for (let i = 0; i < listings; i++) {
-        x = await contract.methods.listedTokens(i).call();
-        if (x['amount'] == 0)     // Skip sold out listings
-          continue;
-        appendListingToBody(body, i, x['amount']);
-    }
-}
-
 async function createListingScreen() {
   location.href = "./create_listing.html";
 }
@@ -995,39 +956,6 @@ async function submitListingCancellation() {
   id = document.getElementById('listing_id').value;
   const account = await getAccount();
   await window.contract.methods.cancelListing(id).send({from: account});
-}
-
-function appendStatus(status) {
-    const statusEl = document.getElementById('status');
-    statusEl.innerHTML += status;
-}
-
-function updateStatus(status) {
-    const statusEl = document.getElementById('status');
-    statusEl.innerHTML = status;
-    console.log(status);
-}
-
-
-function voteForCandidate(candidate) {
-
- candidateName = $("#candidate").val();
-
- console.log(candidateName);
-
-
- contract.methods.voteForCandidate(web3.utils.asciiToHex(candidateName)).send({from: account}).then((f) => {
-
-  let div_id = candidates[candidateName];
-
-  contract.methods.totalVotesFor(web3.utils.asciiToHex(candidateName)).call().then((f) => {
-
-   $("#" + div_id).html(f);
-
-  })
-
- })
-
 }
 
 load();
