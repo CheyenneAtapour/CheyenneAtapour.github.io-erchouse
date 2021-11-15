@@ -1,4 +1,4 @@
-web3 = new Web3(new Web3.providers.HttpProvider("https://eth-rinkeby.alchemyapi.io/v2/K1jy1ARiEnneR4BI8VTS2LGvDIFEfEC3"))
+web3 = new Web3(new Web3.providers.HttpProvider("https://eth-rinkeby.alchemyapi.io/v2/" + str(process.env.ALCHEMY_KEY)))
 
 abi = [{
             "inputs": [
